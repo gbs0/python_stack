@@ -40,9 +40,10 @@ def calc_lifetime(month_lifetime, target_market_share, quantity, sell_throught, 
   # Calcular Sell-Thru
   st = calc_st(target_market_share, sell_throught)
   st_per_month = st / st_months
+  units = quantity
   
   month_lifetime.times do
-  	row.push({ month: months[i].to_s, sales: st_per_month.to_s, units: 10 })
+  	row.push({ month: months[i].to_s, sales: st_per_month.to_s, units:  })
   end
 
   print("#{row[:month]}               #{row[:sales]}                       #{row[:units]}")
