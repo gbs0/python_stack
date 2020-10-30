@@ -20,7 +20,7 @@ def forecasting(month_period, market_volume, market_share, sell_throught, st_mon
 	
 	# Print Header
 	calc_forecast(market_volume, target_market_share, quantity)
-	calc_lifetime(month_lifetime, target_market_share, quantity, sell_throught, st_months)
+	calc_lifetime(month_lifetime, target_market_share, quantity, sell_throught, st_months, price)
 
 end
 
@@ -30,7 +30,7 @@ def calc_forecast(market_volume, target_market_share, quantity)
 end
 
 # TABLE
-def calc_lifetime(month_lifetime, target_market_share, quantity, sell_throught, st_months)
+def calc_lifetime(month_lifetime, target_market_share, quantity, sell_throught, st_months, price)
   print("Mes  | Quantidade de Vendas  | Vendas Mensais \n")
 
   months = %w[ Jan Mar Abr Mai Jun Jul Ago Set Out Nov Dec ]
@@ -43,10 +43,10 @@ def calc_lifetime(month_lifetime, target_market_share, quantity, sell_throught, 
   units = (target_market_share / price) / st_months
 
   month_lifetime.times do
-  	row.push({ month: months[i].to_s, sales: st_per_month.to_s, units:  })
+  	row.push({ month: months[i].to_s, sales: st_per_month.to_s, units: 0})
   end
 
-  print("#{row[:month]}               #{row[:sales]}                       #{row[:units]}")
+  print("#{row[:month.to_s]}               #{row[:sales.to_s]}                       #{row[:units.to_s]}")
 end
 
 def calc_st(target_market_share, sell_throught)
