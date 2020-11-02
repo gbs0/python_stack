@@ -1,6 +1,8 @@
+require 'pry'
+
 def forecasting(month_period, market_volume, market_share, sell_throught, st_months)	
 	
-	month_lifetime = month_lifetime.to_i
+	month_lifetime = month_period.to_i
 	
 	# Preço com base no preço lider - porcentagem
 	lider_price = 200
@@ -42,11 +44,13 @@ def calc_lifetime(month_lifetime, target_market_share, quantity, sell_throught, 
   st_per_month = st / st_months
   units = (target_market_share / price) / st_months
 
+
   month_lifetime.times do
   	row.push({ month: months[i].to_s, sales: st_per_month.to_s, units: 0})
   end
 
-  print("#{row[:month.to_s]}               #{row[:sales.to_s]}                       #{row[:units.to_s]}")
+  row.each { |line| print("#{line[:month]}  #{line[:sales]}  #{line[:units]} \n") }
+  
 end
 
 def calc_st(target_market_share, sell_throught)
