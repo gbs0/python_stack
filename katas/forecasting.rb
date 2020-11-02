@@ -1,4 +1,3 @@
-require 'pry'
 
 def forecasting(month_period, market_volume, market_share, sell_throught, st_months)	
 	
@@ -35,7 +34,7 @@ end
 def calc_lifetime(month_lifetime, target_market_share, quantity, sell_throught, st_months, price)
   print("Mes  | Quantidade de Vendas  | Vendas Mensais \n")
 
-  months = %w[ Jan Mar Abr Mai Jun Jul Ago Set Out Nov Dec ]
+  months = %w[ Jan Fev Mar Abr Mai Jun Jul Ago Set Out Nov Dec ]
   row = []
 
   i = 0
@@ -47,10 +46,11 @@ def calc_lifetime(month_lifetime, target_market_share, quantity, sell_throught, 
 
   month_lifetime.times do
   	row.push({ month: months[i].to_s, sales: st_per_month.to_s, units: 0})
+  	i += 1
   end
 
   row.each { |line| print("#{line[:month]}  #{line[:sales]}  #{line[:units]} \n") }
-  
+   
 end
 
 def calc_st(target_market_share, sell_throught)
